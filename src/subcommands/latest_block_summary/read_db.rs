@@ -65,10 +65,8 @@ fn get_highest_block(
             if let Some(progress_tracker) = maybe_progress_tracker.as_mut() {
                 progress_tracker.advance_by(1);
             }
-            if must_be_switch_block {
-                if !header.is_switch_block() {
-                    continue;
-                }
+            if must_be_switch_block && !header.is_switch_block() {
+                continue;
             }
 
             if header.height() >= max_height {
